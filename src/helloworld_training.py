@@ -6,6 +6,7 @@ import pandas as pd
 sys.path.append(".")
 from modeltraining import ModelTraining
 from os.path import isfile, join
+from sklearn import linear_model
 
 class HelloWorldTraining(ModelTraining):
 
@@ -17,8 +18,19 @@ class HelloWorldTraining(ModelTraining):
         
         try:
            # Load the Cardio Dataset
-            mydata = pd.read_csv('CardioGoodFitness.csv')
-               
+           mydata = pd.read_csv('CardioGoodFitness.csv')
+           # Simple Linear Regression
+
+            #Load function from sklearn
+            
+            # Create linear regression object
+            regr = linear_model.LinearRegression()
+
+            y = mydata['Miles']
+            x = mydata[['Usage','Fitness']]
+
+            # Train the model using the training sets
+            regr.fit(x,y)    
         except Exception as e:
             raise e
 

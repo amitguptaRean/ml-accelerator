@@ -9,11 +9,15 @@ from os.path import isfile, join
 
 class HelloWorldInference(ModelTraining):
 
-    def __init__(self):
-        # load the model
+    def __init__(self, Usage, Fitness):
+        self.Usage = Usage
+        self.Fitness = Fitness
         pass
         
-
+    """
+    return MilesPredicted
+    """
     def run(self):
-        # MilesPredicted = -56.74 + 20.21*Usage + 27.20*Fitness
-        return -1
+        # load the model
+        MilesPredicted = -56.74 + 20.21*self.Usage + 27.20*self.Fitness
+        return MilesPredicted
