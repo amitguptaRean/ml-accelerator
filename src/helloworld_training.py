@@ -1,4 +1,5 @@
 import os
+import json
 import sys
 import argparse
 import numpy as np
@@ -17,9 +18,10 @@ class HelloWorldTraining(ModelTraining):
     def train(self):
         
         try:
-           # Load the Cardio Dataset
-           mydata = pd.read_csv('CardioGoodFitness.csv')
-           # Simple Linear Regression
+            
+            # Load the Cardio Dataset
+            mydata = pd.read_csv('src/CardioGoodFitness.csv')
+            # Simple Linear Regression
 
             #Load function from sklearn
             
@@ -30,7 +32,14 @@ class HelloWorldTraining(ModelTraining):
             x = mydata[['Usage','Fitness']]
 
             # Train the model using the training sets
-            regr.fit(x,y)    
+            regr.fit(x,y)  
+            model_param = {}
+            model_param['coef'] = list(regr.coef_)
+            model_param['intercept'] = regr.intercept_.tolist()
+            model_json = json.dumps(model_param, indent = 4)
+            with open('model_json.txt','w') as file:
+                file.write('model_json')
+                
         except Exception as e:
             raise e
 

@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 import argparse
 import numpy as np
 import pandas as pd
@@ -19,5 +20,8 @@ class HelloWorldInference(ModelTraining):
     """
     def run(self):
         # load the model
-        MilesPredicted = -56.74 + 20.21*self.Usage + 27.20*self.Fitness
+        with open('model_json.txt','r') as file:
+            model_param = json.load(file)
+
+        MilesPredicted = model_param['intercept'] + model_param['coef'][0]*self.Usage + model_param['coef'][1]*self.Fitness
         return MilesPredicted
