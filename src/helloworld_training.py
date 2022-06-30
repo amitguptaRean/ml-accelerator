@@ -38,8 +38,8 @@ class HelloWorldTraining(ModelTraining):
             model_param['intercept'] = regr.intercept_.tolist()
             model_json = json.dumps(model_param, indent = 4)
             with open('model_json.txt','w') as file:
-                file.write('model_json')
-                
+                file.write(model_json)
+
         except Exception as e:
             raise e
 

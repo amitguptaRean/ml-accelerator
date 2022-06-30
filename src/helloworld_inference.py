@@ -5,10 +5,10 @@ import argparse
 import numpy as np
 import pandas as pd
 sys.path.append(".")
-from modeltraining import ModelTraining
+from modelinference import ModelInference
 from os.path import isfile, join
 
-class HelloWorldInference(ModelTraining):
+class HelloWorldInference(ModelInference):
 
     def __init__(self, Usage, Fitness):
         self.Usage = Usage
@@ -22,6 +22,9 @@ class HelloWorldInference(ModelTraining):
         # load the model
         with open('model_json.txt','r') as file:
             model_param = json.load(file)
-
+        # print(model_param)
         MilesPredicted = model_param['intercept'] + model_param['coef'][0]*self.Usage + model_param['coef'][1]*self.Fitness
         return MilesPredicted
+    
+inf = HelloWorldInference(1,2)
+print(inf.run())
