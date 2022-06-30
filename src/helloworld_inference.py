@@ -26,5 +26,3 @@ class HelloWorldInference(ModelInference):
         MilesPredicted = model_param['intercept'] + model_param['coef'][0]*self.Usage + model_param['coef'][1]*self.Fitness
         return MilesPredicted
     
-inf = HelloWorldInference(1,2)
-print(inf.run())
