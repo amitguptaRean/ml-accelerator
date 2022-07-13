@@ -9,6 +9,8 @@ from modeltraining import ModelTraining
 from os.path import isfile, join
 from sklearn import linear_model
 
+import pickle
+
 class HelloWorldTraining(ModelTraining):
 
     def __init__(self):
@@ -33,12 +35,20 @@ class HelloWorldTraining(ModelTraining):
 
             # Train the model using the training sets
             regr.fit(x,y)  
+
+            # save model
+            #   as JSON
             model_param = {}
             model_param['coef'] = list(regr.coef_)
             model_param['intercept'] = regr.intercept_.tolist()
+
             model_json = json.dumps(model_param, indent = 4)
             with open('model_json.txt','w') as file:
                 file.write(model_json)
+            
+            #   as pickle
+            filename = 'model_pickle.sav'
+            pickle.dump(regr, open(filename, 'wb'))
 
         except Exception as e:
             raise e
