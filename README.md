@@ -112,7 +112,7 @@ From the root of the repository, run the following command:
 ```
 python helloworld_inference.py
 or
-Can execute through run button of the file.
+Can execute through run button o the file.
 ```
 
 ### Unit Tests
@@ -120,6 +120,8 @@ From the root of repository,
 ```
 python -m unittest test.inference.batchai.batchai_inference_test.BatchaiInferencingTest.test_batchinference
 python -m unittest test.training.batchai.batchai_training_test.TestTraining.test_training_dataloading
+
+python -m unitest TestHelloWorldInference.test_run
 
 ```
 
