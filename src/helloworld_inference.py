@@ -33,7 +33,7 @@ class HelloWorldInference(ModelInference):
         #MilesPredicted = model_param['intercept'] + model_param['coef'][0]*self.Usage + model_param['coef'][1]*self.Fitness
         #print(MilesPredicted)
 
-        #   from pickle
+        
         filename = 'model_pickle.sav'
         model_param = pickle.load(open(filename, 'rb'))
 
@@ -45,7 +45,7 @@ class HelloWorldInference(ModelInference):
         return MilesPredicted
     
 def main():
-    m = HelloWorldInference(float(sys.argv[1]), float(sys.argv[2]))
+    m = HelloWorldInference(1, 2)
     #print(m)
 
     return m.run()
