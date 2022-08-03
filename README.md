@@ -53,7 +53,7 @@ pip install from requirements.txt file
 ```
 python --version
 python -m venv .venv
-.venv\scripts\activate
+ .venv\scripts\activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
@@ -75,7 +75,7 @@ python .\src\helloworld_training.py
 ```
 Can execute through run button of the file.
 
-After training, the subsequent model is serialized as a pickle (.sav) file.
+After training, the subsequent model is serialized as a pickle (.pkl) file.
 
 ### Run Inference - Unit test on you development machine
 From the root of the repository, run the following command:
@@ -93,3 +93,16 @@ python -m unittest test.helloworld_inference_test
                              
 ```
 
+# Docker image local build, and upload to AWS
+```
+(Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 256555058276.dkr.ecr.us-east-2.amazonaws.com
+docker build -t tcb-models .
+docker tag tcb-models:latest 256555058276.dkr.ecr.us-east-2.amazonaws.com/tcb-models:latest
+docker push 256555058276.dkr.ecr.us-east-2.amazonaws.com/tcb-models:latest
+
+docker build --tag cardio-fitness-docker .
+docker images
+docker run -i -t ehm-efast-filemanager-py-docker
+docker ps
+docker stop <container id>
+```

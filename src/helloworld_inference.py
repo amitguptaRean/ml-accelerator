@@ -4,7 +4,6 @@ import json
 import argparse
 import numpy as np
 import pandas as pd
-sys.path.append(".")
 from modelinference import ModelInference
 from os.path import isfile, join
 import pickle
@@ -34,13 +33,13 @@ class HelloWorldInference(ModelInference):
         #print(MilesPredicted)
 
         
-        filename = 'model_pickle.sav'
+        filename = 'cardio_fitnesss_model.pkl'
         model_param = pickle.load(open(filename, 'rb'))
 
         print(model_param)
 
         MilesPredicted = model_param.predict(np.array([[self.Usage, self.Fitness]]))[0]
-        print(MilesPredicted)
+        print("Model rpediction for miles {}",MilesPredicted)
 
         return MilesPredicted
     

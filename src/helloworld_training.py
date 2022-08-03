@@ -4,7 +4,6 @@ import sys
 import argparse
 import numpy as np
 import pandas as pd
-sys.path.append(".")
 from modeltraining import ModelTraining
 from os.path import isfile, join
 from sklearn import linear_model
@@ -47,8 +46,9 @@ class HelloWorldTraining(ModelTraining):
                 file.write(model_json)
             
             #   as pickle
-            filename = 'model_pickle.sav'
+            filename = 'cardio_fitnesss_model.pkl'
             pickle.dump(regr, open(filename, 'wb'))
+            print('Helloworld - Cardio Fitness Model training completed')
 
         except Exception as e:
             raise e
