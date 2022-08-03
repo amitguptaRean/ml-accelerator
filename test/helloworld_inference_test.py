@@ -1,7 +1,7 @@
 import unittest
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..\src'))
+# sys.path.append(os.path.join(sys.path[0],'..','src'))
 from helloworld_inference import HelloWorldInference
 
 """
@@ -20,9 +20,11 @@ class TestHelloWorldInference(unittest.TestCase):
 
 def main():
     m = TestHelloWorldInference()
-    #print(m)
+    print(m)
 
     return m.test_run()
+    
+
 
 
 if __name__== "__main__":

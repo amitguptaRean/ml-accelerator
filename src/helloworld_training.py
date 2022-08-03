@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 sys.path.append(".")
 from modeltraining import ModelTraining
+from sklearn.model_selection import cross_val_score
 from os.path import isfile, join
 from sklearn import linear_model
 
@@ -32,6 +33,10 @@ class HelloWorldTraining(ModelTraining):
 
             y = mydata['Miles']
             x = mydata[['Usage','Fitness']]
+
+            # Use k-fold cross-validation to properly assess model quality
+            scores = -1 * cross_val_score(regr,x,y,cv = 5,scoring='neg_root_mean_squared_error')
+            print(scores.mean())
 
             # Train the model using the training sets
             regr.fit(x,y)  

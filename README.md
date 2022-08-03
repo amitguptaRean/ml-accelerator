@@ -60,7 +60,7 @@ pip install -r requirements.txt
 Now ensure that VS Code is using the python interpreter from the venv by checking the panel in the status bar. (e.g. "Python 3.8.10 64-bit ('.venv': venv)")
 The .nev file has the AML_PIPELINE_EXEC_MODE setting that can be 
 * 'PROD' : Run as pipeline
-* 'DEV' : Run locally from develooper PC/VSCode
+* 'DEV' : Run locally from developer PC/VSCode
 
 ### Data Preparation
 Data is given in the CardioGoodFitness.csv file
