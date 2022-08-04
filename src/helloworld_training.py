@@ -22,7 +22,7 @@ class HelloWorldTraining(ModelTraining):
         try:
             
             # Load the Cardio Dataset
-            mydata = pd.read_csv('src/CardioGoodFitness.csv')
+            mydata = pd.read_csv('data/CardioGoodFitness.csv')
             # Simple Linear Regression
 
             #Load function from sklearn
@@ -52,7 +52,7 @@ class HelloWorldTraining(ModelTraining):
                 file.write(model_json)
             
             #   as pickle
-            filename = 'cardio_fitness_model.pkl'
+            filename = 'model/cardio_fitness_model.pkl'
             pickle.dump(regr, open(filename, 'wb'))
             print('Helloworld - Cardio Fitness Model training completed')
 

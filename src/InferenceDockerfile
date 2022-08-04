@@ -1,5 +1,8 @@
 FROM python:3.9-slim-buster
+MKDIR /opt/ml/ml-accelerator
+COPY model/ /opt/ml/ml-accelerator/model
+COPY src/ /opt/ml/ml-accelerator/src
+WORKDIR /opt/ml/ml-accelerator
+COPY .env .env
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
-COPY ./src /src
-COPY ../cardio_fitness_model.pkl cardio_fitness_model.pkl 
