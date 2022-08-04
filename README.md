@@ -89,20 +89,33 @@ Can execute through run button of the file.
 ### Unit Tests
 From the root of repository,
 ```                          
-python -m unittest test.helloworld_inference_test
+python -m unittest test.helloworld_inference_test.TestHelloWorldInference.test_run
                              
 ```
 
 # Docker image local build, and upload to AWS
 ```
-(Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 256555058276.dkr.ecr.us-east-2.amazonaws.com
-docker build -t tcb-models .
-docker tag tcb-models:latest 256555058276.dkr.ecr.us-east-2.amazonaws.com/tcb-models:latest
-docker push 256555058276.dkr.ecr.us-east-2.amazonaws.com/tcb-models:latest
-
-docker build --tag cardio-fitness-docker .
+docker build --tag helloworld-docker -f InferenceDockerfile .
 docker images
-docker run -i -t ehm-efast-filemanager-py-docker
+docker run -i -t helloworld-docker
 docker ps
 docker stop <container id>
+
+MAC/Bash on Windows
+aws ecr get-login-password --region us-east-1 --profile dsaiml| docker login --username AWS --password-stdin 256555058276.dkr.ecr.us-east-1.amazonaws.com
+docker build -t helloworld .
+docker tag helloworld:latest 256555058276.dkr.ecr.us-east-1.amazonaws.com/helloworld:latest
+docker push 256555058276.dkr.ecr.us-east-1.amazonaws.com/helloworld:latest
+
+WINDOWS
+(Get-ECRLoginCommand -ProfileName dsaiml).Password | docker login --username AWS --password-stdin 256555058276.dkr.ecr.us-east-1.amazonaws.com
+docker tag helloworld-docker:latest 256555058276.dkr.ecr.us-east-1.amazonaws.com/helloworld:latest
+docker push 256555058276.dkr.ecr.us-east-1.amazonaws.com/helloworld:latest
+
+```
+
+
+```
+https://runtime.sagemaker.us-east-1.amazonaws.com/endpoints/helloworld-endpoint/invocations
+
 ```

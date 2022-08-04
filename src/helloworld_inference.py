@@ -33,7 +33,7 @@ class HelloWorldInference(ModelInference):
         #print(MilesPredicted)
 
         
-        filename = 'cardio_fitnesss_model.pkl'
+        filename = 'cardio_fitness_model.pkl'
         model_param = pickle.load(open(filename, 'rb'))
 
         print(model_param)

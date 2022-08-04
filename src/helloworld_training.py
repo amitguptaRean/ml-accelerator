@@ -35,6 +35,7 @@ class HelloWorldTraining(ModelTraining):
 
             # Use k-fold cross-validation to properly assess model quality
             scores = -1 * cross_val_score(regr,x,y,cv = 5,scoring='neg_root_mean_squared_error')
+            print(scores)
             print(scores.mean())
 
             # Train the model using the training sets
@@ -51,7 +52,7 @@ class HelloWorldTraining(ModelTraining):
                 file.write(model_json)
             
             #   as pickle
-            filename = 'cardio_fitnesss_model.pkl'
+            filename = 'cardio_fitness_model.pkl'
             pickle.dump(regr, open(filename, 'wb'))
             print('Helloworld - Cardio Fitness Model training completed')
 
